@@ -53,5 +53,13 @@ class DatabaseSeeder extends Seeder
             'isi_pengumuman' => 'Diberitahukan kepada operator bahwa penginputan inovasi OPD diperpanjang.',
             'is_active' => true
         ]);
+
+        \App\Models\User::create([
+            'opd_id' => $bapperida->id,
+            'name' => 'Operator Bapperida',
+            'email' => 'operator.bapperida@pangkalpinangkota.go.id',
+            'password' => ('password123'),
+            'role' => 'operator_opd',
+        ]);
     }
 }

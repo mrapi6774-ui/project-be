@@ -14,12 +14,18 @@ return new class extends Migration
         Schema::create('innovations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('opd_id')->constrained('opds')->onDelete('cascade');
-            $table->string('judul_inovasi');
-            $table->text('deskripsi')->nullable();
-            $table->string('jenis_inovasi')->default('Digital'); // Digital / Non-Digital
-            $table->year('tahun');
-            $table->integer('skor_inovasi')->default(0); // 0 - 100
-            $table->enum('status', ['draft', 'diproses', 'disetujui'])->default('draft');
+            $table->string('nama_inovasi');
+            $table->string('tahapan');
+            $table->string('inisiator');
+            $table->string('jenis_inovasi');
+            $table->string('bentuk_inovasi');
+            $table->text('rancangan_bangun');
+            $table->text('tujuan')->nullable();
+            $table->text('manfaat')->nullable();
+            $table->text('hasil_inovasi')->nullable();
+            $table->string('tahun');
+            $table->decimal('skor_inovasi', 8, 2)->default(0);
+            $table->enum('status', ['pending', 'disetujui', 'ditolak'])->default('pending');
             $table->timestamps();
         });
     }
